@@ -1,0 +1,14 @@
+<div>
+    <h1>{{recipe.Name}}</h1>
+    <h3>{{category.Name}} קטגוריה:</h3>
+    <img src="../../assets/icons/{{category.Icon}}" />
+    <h3>{{recipe.Level|stars}} דרגת קושי:</h3>
+    <img src="../../assets/images/{{recipe.Image}}" />
+    <h3>{{recipe.PreparationTimeInMinute|castTime}} זמן הכנה:</h3>
+    <h2>רכיבים:</h2>
+    <app-one-layer *ngFor="let l of recipe.Layers" [layer]="l"></app-one-layer>
+    <h2 >הוראות הכנה</h2>
+    <h4 *ngFor="let p of recipe.Preparation;let i=index">{{+i+1}} .{{p}} </h4>
+    <h5>{{recipe.UserId}}</h5>
+    <button *ngIf="ofCurrentUser" (click)="toEdit()">עריכת מתכון</button>
+</div>

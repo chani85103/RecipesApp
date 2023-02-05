@@ -1,0 +1,12 @@
+<!-- <label>מספר זהות</label>
+    <input type="number" [(ngModel)]="user.Id" /> -->
+<label>שם</label>
+<input type="text" [(ngModel)]="user.Name" />
+<label>סיסמה</label>
+<input type="password" [(ngModel)]="user.Password" />
+<label>דואר אלקטרוני</label>
+<input type="email" [(ngModel)]="user.Mail" />
+<label>כתובת</label>
+<input type="text" [(ngModel)]="user.Address" />
+<button (click)="register()">הרשמה</button>
+<h2 *ngIf="userExist">משתמש קיים</h2>

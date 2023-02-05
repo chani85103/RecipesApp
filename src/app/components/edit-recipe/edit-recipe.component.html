@@ -1,0 +1,34 @@
+<form>
+    <p>שם המאכל</p>
+    <input type="text" [(ngModel)]="recipe.Name" placeholder="{{recipe.Name}}" name="name" />
+    <p>קטגוריה</p>
+    <select [(ngModel)]="recipe.CategoryId" name="category">
+        <option *ngFor="let x of arrCategories" [value]="x.Id">{{x.Name}}</option>
+    </select>
+    <p>דרגת קושי</p>
+    <input type="text" [(ngModel)]="recipe.Level" pattern="[1-5]" name="level" placeholder="{{recipe.Level}}" />
+    <p>זמן הכנה - דקות </p>
+    <input type="number" placeholder="{{recipe.PreparationTimeInMinute}}" [(ngModel)]="recipe.PreparationTimeInMinute"
+        name="PreparationTimeInMinute" />
+    <p>שם התמונה</p>
+    <input type="text" name="Image" placeholder="{{recipe.Image}}" [(ngModel)]="recipe.Image" />
+    <div *ngFor="let l of recipe.Layers; let i=index">
+        <input type="text" name="desc" [(ngModel)]="recipe.Layers[i].Description" />
+        <input *ngFor="let c of l.Components;let ind=index " [(ngModel)]="recipe.Layers[i].Components[ind]"
+            name="cLayer" />
+    </div>
+    <p>תאור שכבה</p>
+    <input type="text" [(ngModel)]="description" name="description" placeholder="description" />
+    <p>רכיבי שכבה</p>
+    <input type="text" [(ngModel)]="component" name="component" placeholder="component" />
+    <button (click)="addComponent()">הוסף רכיב</button>
+    <button (click)="addLayer()">הוסף שכבה</button>
+    <p>הוראות הכנה</p>
+    <div *ngFor="let l of recipe.Preparation; let i=index">
+        <input type="text" name="prep{{i}}" [(ngModel)]="preparationArr[i]" />
+    </div>
+    <input type="text" [(ngModel)]="preparation" name="preparation" />
+    <button (click)="addPreparation()">הוסף הוראה</button>
+    <button (click)="save()"> סיום עריכת מתכון </button>
+    <button (click)="cancel()">ביטול שינויים</button>
+</form>

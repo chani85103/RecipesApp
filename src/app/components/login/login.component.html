@@ -1,0 +1,23 @@
+<!-- <label>שם</label>
+<p>
+    <mat-form-field appearance="outline">
+      <mat-label>Outline form field</mat-label>
+      <input type="text" matInput placeholder="name"[(ngModel)]="user.Name">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+  </p>
+  <label>סיסמא</label>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Outline form field</mat-label>
+      <input type="text" matInput placeholder="password" [(ngModel)]="user.Password" >
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+  </p> -->
+  <input type="text"  placeholder="name"[(ngModel)]="user.Name">
+  <input type="text" placeholder="password" [(ngModel)]="user.Password" >
+  <button (click)="login()">login</button>
+  
+<h2 *ngIf="tryLogin">סיסמא שגויה</h2>

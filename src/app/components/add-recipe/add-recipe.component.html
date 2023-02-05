@@ -1,0 +1,42 @@
+<div>
+    <form (ngSubmit)="save()" #myForm="ngForm" >
+        <p>שם המאכל</p>
+        <input type="text" minlength="2" [(ngModel)]="recipe.Name" placeholder="name" #name="ngModel" name="name" required/>
+        <div *ngIf="name.errors?.['required']">
+            Name is required.
+          </div>
+          <div *ngIf="name.errors?.['minlength']">
+            Name must be at least 2 characters long.
+          </div>
+        <p>קטגוריה</p>
+        <select [(ngModel)]="recipe.CategoryId"  name="category" value="arrCategories[0]">
+            <option *ngFor="let x of arrCategories" [value]="x.Id">{{x.Name}}</option>
+        </select>
+        <p >דרגת קושי</p>
+        <input type="text" #level="ngModel" [(ngModel)]="recipe.Level" min="1" max="5"  name="level" placeholder="level" required/>
+        <div *ngIf="level.errors?.['required']">
+            level is required.
+          </div>
+          <div *ngIf="level.errors?.['min']">
+            level must be at least 1 
+          </div>
+          <div *ngIf="level.errors?.['max']">
+            level must be maximum 5 
+          </div>
+        <p>זמן הכנה - דקות </p>
+        <input type="number" #prepTime="ngModel"  placeholder="PreparationTimeInMinute" [(ngModel)]="recipe.PreparationTimeInMinute" name="PreparationTimeInMinute" />
+        <p>שם התמונה</p>
+        <input type="text" #imgName="ngModel" minlength="5" name="Image" placeholder="image" [(ngModel)]="recipe.Image" />
+        <p>תאור שכבה</p>
+        <input type="text"  [(ngModel)]="description" name="description" placeholder="description"/>
+        <p>רכיבי שכבה</p>
+        <input type="text" [(ngModel)]="component" name="component" placeholder="component"/>
+        <button *ngIf="component!=''" (click)="addComponent()">הוסף רכיב</button>
+        <button style="color: coral;" (click)="addLayer()">הוסף שכבה</button>
+        <p>הוראות הכנה</p>
+        <input type="text" [(ngModel)]="preparation" name="preparation" placeholder="preparation" />
+        <button *ngIf="preparation!=''" (click)="addPreparation()">הוסף הוראה</button>
+        <button style="color: coral;" (click)="save()">הוסף מתכון</button>
+        <input type="submit" value="שמור" [disabled]="!myForm.valid"/>
+    </form>
+</div>
